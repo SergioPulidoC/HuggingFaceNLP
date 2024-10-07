@@ -18,8 +18,6 @@ tokenizer.save_pretrained(Path() / "BertTokenizer")
 sequence = "Using a Transformer network is simple"
 res = tokenizer(sequence)
 print(res)
-Adam
-
 #By parts
 # tokens = tokenizer.tokenize(sequence)
 # # print(tokens)
