@@ -22,7 +22,7 @@ def tokenize_dataset(dataset):
 
 tokenized_datasets = raw_datasets.map(tokenize_dataset, batched=True)
 data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
-training_args = TrainingArguments("test-trainer")
+training_args = TrainingArguments("first-upload", save_strategy="epoch", push_to_hub=True)
 
 def compute_metrics(eval_preds):
     metric = evaluate.load("glue", "mrpc")
@@ -42,3 +42,4 @@ trainer = Trainer(
 )
 trainer.train()
 trainer.save_model(Path() / "MrpcFinetune")
+trainer.push_to_hub()
